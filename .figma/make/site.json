@@ -1,0 +1,10 @@
+{
+  "description": "Showcase your projects and publications with a sleek, customizable portfolio site featuring light/dark mode, language options, and easy content management.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
