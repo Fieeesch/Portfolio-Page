@@ -23,9 +23,6 @@ logs/
 .DS_Store
 Thumbs.db
 
-# Figma Make local/generated state
-/.figma/design-context/
-
 # Platform-managed agent state, not project source
 /.plugins/
 /.opencode-skills/
