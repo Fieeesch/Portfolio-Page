@@ -159,7 +159,7 @@ export const projects: PortfolioItem[] = [
       },
     ],
     tags: ["Unity", "C#", "Haptics"],
-    link: "https://github.com/Fieeesch/",
+    link: "https://github.com/Fieeesch/PustePorter",
     notes: {
       de: "",
       en: "",
@@ -483,7 +483,17 @@ export const cv: {
   ],
   scholarships: [
     {
-      period: "2024 - 2025",
+      period: "2025 — now",
+      title: { de: "Förderung der Studienstiftung", en: "Scholarship Foundation" },
+      place: {
+        de: "Studienstiftung des Deutschen Volkes",
+        en: "German Academic Scholarship Foundation",
+      },
+      placeLink:
+        "https://www.studienstiftung.de/",
+    },
+    {
+      period: "2024 — 2025",
       title: { de: "Deutschlandstipendium", en: "Deutschland Scholarship" },
       place: {
         de: "Bundesmininsterium für Wissenschaft, Technologie und Raumfahrt",
