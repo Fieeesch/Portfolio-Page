@@ -246,20 +246,6 @@ nav .nav-active::after {
   min-width: 0;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  right: -40vw;
-  bottom: 0;
-  left: 49%;
-  height: 50%;
-  border-top: 1px solid var(--line);
-  border-radius: 50% 0 0;
-  opacity: 0.6;
-  transform: rotate(-5deg);
-}
-
 .eyebrow {
   margin: 0 0 15px;
   color: var(--accent);
@@ -363,7 +349,6 @@ nav .nav-active::after {
   height: 100%;
   border-radius: 10px;
   object-fit: cover;
-  filter: saturate(0.78);
 }
 
 .hero-credit {
@@ -462,7 +447,6 @@ nav .nav-active::after {
 .card-image img {
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.75);
   transition: transform 500ms ease;
 }
 
@@ -644,7 +628,6 @@ nav .nav-active::after {
 
 .detail-media > img {
   height: auto;
-  filter: saturate(0.8);
 }
 
 .carousel-controls {
