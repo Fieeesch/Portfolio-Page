@@ -22,8 +22,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          lfs: true
+
+      - name: Verify image assets
+        run: |
+          if grep -RIl "version https://git-lfs.github.com/spec/v1" public/images; then
+            echo "::error::Some image assets are still Git LFS pointer files."
+            exit 1
+          fi
 
       - name: Setup Node
         uses: actions/setup-node@v4
