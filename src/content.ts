@@ -23,6 +23,8 @@ export type CvEntry = {
   placeLink?: string
 }
 
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`
+
 export const profile = {
   name: "Cecilia Halbritter",
   role: {
@@ -41,7 +43,7 @@ export const profile = {
   github: "https://github.com/fieeesch/",
   linkedin: "www.linkedin.com/in/cecilia-halbritter-5737b7349/",
   location: "Wiesbaden, Deutschland",
-  heroImage: "/images/cecilia-hero.jpg",
+  heroImage: asset("/images/cecilia-hero.jpg"),
   heroAlt: {
     de: "Porträt auf einem belebten Markt",
     en: "Portrait at a busy market",
@@ -67,35 +69,35 @@ export const projects: PortfolioItem[] = [
     date: "2026-07",
     images: [
       {
-        src: "/images/tretbot-demo.png",
+        src: asset("/images/tretbot-demo.png"),
         alt: {
           de: "Demo der TretBot-Anwendung mit Texteingabe, Tokenausgabe und Roboterfigur",
           en: "Demo of the TretBot application with text input, token output, and robot character",
         },
       },
       {
-        src: "/images/tretbot-character.png",
+        src: asset("/images/tretbot-character.png"),
         alt: {
           de: "Grafik der verschiedenen Gesichtsausdrücke des TretBot",
           en: "Graphic showing the different facial expressions of TretBot",
         },
       },
       {
-        src: "/images/tretbot-tech.png",
+        src: asset("/images/tretbot-tech.png"),
         alt: {
           de: "Technischer Aufbau des umgebauten Pedaltrainers für TretBot",
           en: "Technical setup of the modified pedal trainer for TretBot",
         },
       },
       {
-        src: "/images/tretbot-ui.png",
+        src: asset("/images/tretbot-ui.png"),
         alt: {
           de: "Nutzung des TretBot-Pedaltrainers mit sichtbarer Geräteanzeige",
           en: "Using the TretBot pedal trainer with its device display visible",
         },
       },
       {
-        src: "/images/tretbot-pedal.png",
+        src: asset("/images/tretbot-pedal.png"),
         alt: {
           de: "TretBot-Projektaufnahme",
           en: "TretBot project photograph",
@@ -148,14 +150,14 @@ export const publications: PortfolioItem[] = [
     date: "2026-03-22",
     images: [
       {
-        src: "/images/genie-vr-final.png",
+        src: asset("/images/genie-vr-final.png"),
         alt: {
           de: "Story-adaptives VR-Lesesystem mit generierten Umgebungen zu Rotkäppchen",
           en: "Story-adaptive VR reading system with generated environments for Little Red Riding Hood",
         },
       },
       {
-        src: "/images/genie-vr-briefmarkengrafik.png",
+        src: asset("/images/genie-vr-briefmarkengrafik.png"),
         alt: {
           de: "Briefmarkengrafik zum GENIE-Projekt",
           en: "Stamp graphic for the GENIE project",
@@ -187,14 +189,14 @@ export const publications: PortfolioItem[] = [
     date: "2026-03-21",
     images: [
       {
-        src: "/images/dynamic-labels-chemistry.jpg",
+        src: asset("/images/dynamic-labels-chemistry.jpg"),
         alt: {
           de: "Dynamische Textlabels an einem Chemieaufbau in einer virtuellen Lernumgebung",
           en: "Dynamic text labels on a chemistry setup in a virtual learning environment",
         },
       },
       {
-        src: "/images/dynamic-labels-airplane.jpg",
+        src: asset("/images/dynamic-labels-airplane.jpg"),
         alt: {
           de: "Dynamische Textlabels an den Bauteilen eines Flugzeugs in einer virtuellen Umgebung",
           en: "Dynamic text labels on aircraft components in a virtual environment",
@@ -222,7 +224,7 @@ export const publications: PortfolioItem[] = [
     date: "2026-03-21",
     images: [
       {
-        src: "/images/foveated-pathtracing.jpg",
+        src: asset("/images/foveated-pathtracing.jpg"),
         alt: {
           de: "Vergleich von einheitlichem und foveiertem Path Tracing mit und ohne OIDN-Denoising",
           en: "Comparison of uniform and foveated path tracing with and without OIDN denoising",
@@ -270,7 +272,7 @@ export const publications: PortfolioItem[] = [
     date: "2025-03-09",
     images: [
       {
-        src: "/images/unified-rating-system.jpg",
+        src: asset("/images/unified-rating-system.jpg"),
         alt: {
           de: "Übersicht verschiedener haptischer und pseudo-haptischer Verfahren zur Gewichtssimulation in Virtual Reality",
           en: "Overview of haptic and pseudo-haptic approaches to weight simulation in virtual reality",
