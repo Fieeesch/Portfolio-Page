@@ -247,6 +247,10 @@ function Header({
 
 function Home({ language, navigate }: { language: Language; navigate: (page: Page) => void }) {
   const t = ui[language];
+  const featuredItems = [...projects, ...publications]
+    .filter((item) => item.featured)
+    .sort((a, b) => b.date.localeCompare(a.date));
+
   return (
     <>
       <section className="hero section">
@@ -290,8 +294,16 @@ function Home({ language, navigate }: { language: Language; navigate: (page: Pag
           </div>
         </div>
         <div className="card-grid">
-          <ItemCard item={projects[0]} language={language} navigate={navigate} featured showKind />
-          <ItemCard item={publications[0]} language={language} navigate={navigate} showKind />
+          {featuredItems.map((item, index) => (
+            <ItemCard
+              key={item.id}
+              item={item}
+              language={language}
+              navigate={navigate}
+              featured={index === 0}
+              showKind
+            />
+          ))}
         </div>
       </section>
     </>

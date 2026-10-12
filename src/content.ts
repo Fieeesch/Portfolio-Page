@@ -11,6 +11,7 @@ export type PortfolioItem = {
   date: string
   images: { src: string, alt: Localized }[]
   tags: string[]
+  featured?: boolean
   link?: string
   demoLink?: string
   notes?: Localized
@@ -67,6 +68,7 @@ export const projects: PortfolioItem[] = [
       en: "AI chatbots have become an integral part of everyday life. But are we actually aware of how our prompts are processed and how much energy is required behind the scenes? With TretBot, we aim to make both aspects more tangible. We developed a desktop interface connected to Ollama that allows users to chat with different LLMs. The twist: for every input and output token, users have to pedal.\n\nThe rotation of the pedal is detected using a Hall sensor, processed by a Raspberry Pi 5, and transmitted to the desktop application via a WebSocket connection. In the web interface, users have to keep pedaling for each processing step (tokenization, model prefill, reasoning, and output) while the respective step is explained through an infographic. Users can also choose between models with different levels of capability, although a higher parameter count also increases the pedaling resistance.\n\nIn a field study, we received feedback that the experience was both entertaining and educational.",
     },
     date: "2026-07",
+    featured: true,
     images: [
       {
         src: asset("/images/tretbot-demo.png"),
@@ -219,6 +221,124 @@ export const projects: PortfolioItem[] = [
     },
   },
   {
+    id: "wolkenmeer",
+    kind: "project",
+    title: {
+      de: "Wolkenmeer",
+      en: "Sea of Clouds",
+    },
+    eyebrow: {
+      de: "Computer Games · Gruppenprojekt",
+      en: "Computer Games · Group Project",
+    },
+    description: {
+      de: "Oh nein, der böse Zauberer Wudus hat es auf das friedliche Wolkenmeer abgesehen! Jetzt ist Eile geboten! Schließe dich mit bis zu drei Freunden zusammen, um Wudus Truppen Einhalt zu gebieten!\n\nSchlüpft dabei in die Rollen der Helden Bonko, Olaf, Fibi und Gisberta und segelt mit dem Wolkenschiff der Gefahr entgegen! Zusammen mischt, backt, und verarbeitet ihr euren Schleimvorrat zu mächtiger Munition. Befüllt damit eure Kanonen, um Wudus Truppen zu besiegen und das Wolkenmeer zu retten! Kommunikation an Bord ist dabei der Schlüssel, um nicht im Schleimchaos zu versinken...",
+      en: "Oh no, the evil wizard Wudus is attacking the peaceful Sea of Clouds! Hurry up and unite with up to three friends to stop Wudus' mayhem!\n\nStep into the role of Fibi, Olaf, Bonko or Gisberta and sail toward danger in your Cloud Ship! Together you will mix, bake and process your slime supply into powerful ammunition. Load it into your cannons to defeat Wudus's troops and save the Sea of Clouds! Communication on board is the key to keep you from sinking into slimy chaos...",
+    },
+    date: "2025-01",
+    featured: true,
+    images: [
+      {
+        src: asset("/images/wolkenmeer-title.png"),
+        alt: {
+          de: "Titelbild von Wolkenmeer mit Helden auf einem Wolkenschiff, Schleimvorräten und heranfliegenden Gegnern",
+          en: "Title image of Wolkenmeer with heroes on a cloud ship, slime supplies, and approaching enemies",
+        },
+      },
+      {
+        src: asset("/images/wolkenmeer-gameplay.png"),
+        alt: {
+          de: "Gameplay-Ansicht vom Deck des Wolkenschiffs mit Kanonen, Crafting-Stationen und Gegnern im Wolkenmeer",
+          en: "Gameplay view from the cloud ship deck with cannons, crafting stations, and enemies in the sea of clouds",
+        },
+      },
+      {
+        src: asset("/images/wolkenmeer-pov.png"),
+        alt: {
+          de: "Spielerperspektive hinter einer Kanone mit mehreren Schleim-Gegnern im rosa Wolkenhimmel",
+          en: "Player perspective behind a cannon with several slime enemies in a pink cloud sky",
+        },
+      },
+      {
+        src: asset("/images/wolkenmeer-crafting.png"),
+        alt: {
+          de: "Diagramm des Wolkenmeer-Crafting-Systems mit Schleimzutaten, Arbeitsschritten und Munitionsarten",
+          en: "Diagram of the Wolkenmeer crafting system with slime ingredients, processing steps, and ammunition types",
+        },
+      },
+      {
+        src: asset("/images/wolkenmeer-assets.png"),
+        alt: {
+          de: "Überblick über die im Spiel verwendeten 3D-Modelle, inklusive Kanonen, Craftingstationen und Gegner",
+          en: "Overview of the game's 3D models including cannons, crafting stations and enemy characters",
+        },
+      },
+    ],
+    tags: ["Couch Coop Multiplayer", "Unity", "C#"],
+    link: "https://cilhlb.itch.io/wolkenmeer",
+    notes: {
+      de: "Das fertige Spiel haben wir als kostenlos herunterladbare .exe auf itch.io veröffentlicht:",
+      en: "We published the final game as a free-to-download executable on itch.io:",
+    },
+  },
+  {
+    id: "1001km",
+    kind: "project",
+    title: { de: "1001 km — Die Bike Tracking App", en: "1001 km — Bike Tracking App" },
+    eyebrow: {
+      de: "Handy-App · Agile Entwicklung",
+      en: "Mobile App · Agile Development",
+    },
+    description: {
+      de: "Etwa eintausend Kilometer - so weit müsste man mit dem Fahrrad fahren, um Deutschland einmal komplett vertikal zu durchqueren. Bei dieser Challenge unterstützt dich die Tracking-App „1001 km”.\n\n• Zeichne einzelne Etappen auf. Entscheide selbst, ob du die Strecke von Nord nach Süd, umgekehrt oder völlig durcheinander bestreiten willst.\n\n• Tracke deine Leistung: Sowohl während dem Fahren als auch nach der Aufzeichnung kannst du dir deine Strecke, Dauer und Geschwindigkeit anschauen.\n\n• Kartenintegration: Importiere deine gewünschte Route und nutze sie zur Navigation.",
+      en: "Around one thousand kilometers. That is roughly how far you would have to cycle to cross Germany from north to south. The tracking app “1001 km” helps you take on this challenge.\n\n• Record individual stages. Decide for yourself whether you want to complete the route from north to south, the other way around, or in any order you like.\n\n• Track your performance: Both during the ride and afterwards, you can view your route, duration, and speed.\n\n• Map integration: Import your planned route and use it for navigation.",
+    },
+    date: "2025-01",
+    images: [
+      {
+        src: asset("/images/1001km-title.png"),
+        alt: {
+          de: "",
+          en: "",
+        },
+      },
+      {
+        src: asset("/images/1001km-tracking.png"),
+        alt: {
+          de: "",
+          en: "",
+        },
+      },
+      {
+        src: asset("/images/1001km-planung.png"),
+        alt: {
+          de: "",
+          en: "",
+        },
+      },
+      {
+        src: asset("/images/1001km-tour.png"),
+        alt: {
+          de: "",
+          en: "",
+        },
+      },
+      {
+        src: asset("/images/1001km-etappe.png"),
+        alt: {
+          de: "",
+          en: "",
+        },
+      },
+    ],
+    tags: ["React Native", "TypeScript"],
+    link: "https://github.com/Geplatzter-Reifen/foof",
+    notes: {
+      de: "1001 km ist ein Semesterprojekt, das in einer fünfköpfigen Gruppe nach dem SCRUM-Framework agil entwickelt wurde.",
+      en: "1001 km is a semester project developed by a team of five using the Scrum framework.",
+    },
+  },
+  {
     id: "more",
     kind: "project",
     title: { de: "More is coming...", en: "More is coming..." },
@@ -254,6 +374,7 @@ export const publications: PortfolioItem[] = [
       en: "This paper presents GENIE (Generative Narrative Immersion Engine), a virtual reality (VR)-based reading system that generates story-adaptive 360° panoramic environments from narrative text to deepen readers' engagement with fictional stories. To this end, an AI pipeline segments book text into scene-level units, derives location-focused image prompts via large language models, and synthesizes corresponding panoramas using diffusion-based image generation and neural super-resolution models. In a within-subject user study (N=32) comparing this dynamic environment to a static baseline, we analyzed both subjective Story World Absorption (SWAS) and objective behavior (reading speed, head rotation). The results show that our story-adaptive reading system significantly increased transportation and mental imagery. Moreover, our study reveals critical interaction effects between the narrative and generated environments. These findings suggest that while generative VR can deepen absorption, its effectiveness is modulated by the visual concreteness and pacing of the source text, offering new design implications for the future of immersive reading experiences.",
     },
     date: "2026-03-22",
+    featured: true,
     images: [
       {
         src: asset("/images/genie-vr-final.png"),
