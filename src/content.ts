@@ -438,6 +438,7 @@ export const publications: PortfolioItem[] = [
     ],
     tags: ["Immersive Reading", "360°", "VR", "AI Pipeline"],
     link: "https://doi.org/10.1109/VRW70859.2026.00018",
+    demoLink: "https://github.com/XRG-HSRM/GENIE",
     notes: {
       de: "Lesen innerhalb der Welt der Geschichte - Was als Pflichtprojekt in meinem ersten Mastersemester begann, entwickelte sich zu einer wissenschaftlichen Arbeit mit Nutzerstudie, Auswertung und anschließender Veröffentlichung. Auf der IEEE VR 2026 in Daegu, Südkorea, konnte ich das Paper schließlich präsentieren und hatte darüber hinaus die Möglichkeit, das Land zu bereisen.",
       en: "Reading inside of the story's world - What started as a required project in my first semester of the Master’s program developed into a scientific paper, including a user study, data analysis, and publication. I was eventually able to present the paper at IEEE VR 2026 in Daegu, South Korea, and also had the opportunity to travel around the country.",

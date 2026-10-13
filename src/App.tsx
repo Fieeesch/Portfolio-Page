@@ -442,6 +442,7 @@ function Detail({
   const returnPage = item.kind === "project" ? "projects" : "publications";
   const date = formatPortfolioDate(item.date, language, "long", item.dateEnd);
   const hasProjectAndDemoLinks = Boolean(item.link && item.demoLink);
+  const secondaryLinkLabel = item.kind === "publication" ? t.visit : t.demo;
 
   return (
     <article className="section detail-page">
@@ -502,7 +503,7 @@ function Detail({
           )}
           {item.demoLink && (
             <ButtonLink secondary={!hasProjectAndDemoLinks} href={item.demoLink}>
-              {t.demo}
+              {secondaryLinkLabel}
               <ExternalLink size={17} />
             </ButtonLink>
           )}
