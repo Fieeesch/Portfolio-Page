@@ -9,6 +9,7 @@ export type PortfolioItem = {
   description: Localized
   /** Supported formats: YYYY, YYYY-MM, or YYYY-MM-DD */
   date: string
+  dateEnd?: string
   images: { src: string, alt: Localized }[]
   tags: string[]
   featured?: boolean
@@ -42,7 +43,7 @@ export const profile = {
   },
   email: "cecilia.halbritter@student.hs-rm.de",
   github: "https://github.com/fieeesch/",
-  linkedin: "www.linkedin.com/in/cecilia-halbritter-5737b7349/",
+  linkedin: "https://linkedin.com/in/cecilia-halbritter-5737b7349/",
   location: "Wiesbaden, Deutschland",
   heroImage: asset("/images/cecilia-hero.jpg"),
   heroAlt: {
@@ -106,7 +107,7 @@ export const projects: PortfolioItem[] = [
         },
       },
     ],
-    tags: ["React", "Ollama", "Raspberry Pi"],
+    tags: ["ReactJS", "Ollama", "Raspberry Pi"],
     link: "https://github.com/Fieeesch/TretBot",
     demoLink: "https://tretbot.dtmayer.dev/",
     notes: {
@@ -162,10 +163,6 @@ export const projects: PortfolioItem[] = [
     ],
     tags: ["Unity", "C#", "Haptics"],
     link: "https://github.com/Fieeesch/PustePorter",
-    notes: {
-      de: "",
-      en: "",
-    },
   },
   {
     id: "propeller",
@@ -209,7 +206,7 @@ export const projects: PortfolioItem[] = [
         src: asset("/images/prop-webui.png"),
         alt: {
           de: "Web-UI zur Szenenkonfiguration und Ansicht des Render-Ergebnisses. Aktuell ausgewählt ist der Prisma-Renderer",
-          en: "Web UI used for scene konfiguration and viewing results. Currently displaying the Prism Renderer",
+          en: "Web UI used for scene configuration and viewing results. Currently displaying the Prism Renderer",
         },
       },
     ],
@@ -298,36 +295,36 @@ export const projects: PortfolioItem[] = [
       {
         src: asset("/images/1001km-title.png"),
         alt: {
-          de: "",
-          en: "",
+          de: "Titelgrafik der 1001-km-App mit Smartphone, Kartenansicht und Fahrradroute",
+          en: "Title graphic of the 1001 km app with a smartphone, map view, and cycling route",
         },
       },
       {
         src: asset("/images/1001km-tracking.png"),
         alt: {
-          de: "",
-          en: "",
+          de: "Tracking-Folie mit Smartphone-Kartenansicht, Live-Statistiken und Hinweis zum Aufzeichnen von Etappen",
+          en: "Tracking slide with a smartphone map view, live statistics, and a note about recording stages",
         },
       },
       {
         src: asset("/images/1001km-planung.png"),
         alt: {
-          de: "",
-          en: "",
+          de: "Planungsfolie mit Tourübersicht auf einer Deutschlandkarte und Stichpunkten zum Importieren und Zusammenstellen von Routen",
+          en: "Planning slide with a tour overview on a map of Germany and bullet points about importing and assembling routes",
         },
       },
       {
         src: asset("/images/1001km-tour.png"),
         alt: {
-          de: "",
-          en: "",
+          de: "Tourübersicht der 1001-km-App mit Fortschritt, Statistikwerten, Etappenliste und Optionen zum Nachtragen von Etappen",
+          en: "Tour overview of the 1001 km app with progress, statistics, a stage list, and options for adding stages afterwards",
         },
       },
       {
         src: asset("/images/1001km-etappe.png"),
         alt: {
-          de: "",
-          en: "",
+          de: "Etappenübersicht mit Details zur gefahrenen Strecke, Statistiken und Kartenverlauf einer einzelnen Radtour",
+          en: "Stage overview with details about the ridden route, statistics, and map trace of a single bike ride",
         },
       },
     ],
@@ -339,21 +336,69 @@ export const projects: PortfolioItem[] = [
     },
   },
   {
-    id: "more",
+    id: "portfolio-thesis",
     kind: "project",
-    title: { de: "More is coming...", en: "More is coming..." },
+    title: { de: "Portfolio-Projekt & Bachelor-Thesis", en: "Portfolio Project and Bachelor's Thesis" },
     eyebrow: {
-      de: "to be continued",
-      en: "to be continued",
+      de: "DB Fernverkehr AG",
+      en: "DB Long-Distance AG",
     },
     description: {
-      de: "",
-      en: "",
+      de: "Als duale Studentin bei der Deutschen Bahn hatte ich die einmalige Gelegenheit, mit einer großen Menge an Kund:innendaten zu arbeiten. Darum drehten sich meine Bachelorthesis sowie ein vorbereitendes Portfolioprojekt.\n\nAls Projekt entwickelte ich eine Browser-Extension, die für eine auf bahn.de gesuchte Verbindung anzeigt, wie häufig diese Strecke üblicherweise zu verschiedenen Uhrzeiten gesucht wird. So erhalten Nutzer:innen einen Anhaltspunkt dafür, wie stark die jeweilige Fahrt voraussichtlich ausgelastet sein wird. Grundlage dafür waren Verbindungsanfragen an die Bahn-Systeme, die in einem Data Lake gespeichert und von mir ausgewertet wurden.\n\nWährend meiner Bachelorthesis wertete ich stattdessen Zugbuchungen aus und aggregierte sie zu einem kundenspezifischen Jahresrückblick über die getätigten Reisen. Die Auswertung enthielt beispielsweise die zurückgelegte Strecke oder gespartes CO₂. Ich entwickelte außerdem eine VueJS-Weboberfläche zur Anzeige und analysierte die Gamification-Qualität des Rückblicks.",
+      en: "As a dual study student at Deutsche Bahn, I had the unique opportunity to work with a large amount of customer data. Both my Bachelor's thesis and a preparatory portfolio project focused on making use of this data.\n\nFor the project, I developed a browser extension that shows how frequently a connection searched for on bahn.de is typically requested at different times of day. This gives users an indication of how busy a particular journey is likely to be. The analysis was based on connection requests sent to Deutsche Bahn's systems, which were stored in a data lake and evaluated by me.\n\nFor my Bachelor's thesis, I instead analyzed train bookings and aggregated them into a personalized recap of each customer's journeys in one year. The review included statistics such as the distance traveled and CO₂ saved. I also developed a Vue.js web interface to present the results and analyzed the gamification qualities of the recap.",
     },
-    date: "2024-10-02",
-    images: [],
-    tags: [],
-    link: "https://github.com/Fieeesch",
+    date: "2025-03",
+    dateEnd: "2025-09",
+    images: [
+      {
+        src: asset("/images/portfolio-thesis.png"),
+        alt: {
+          de: "Logo der Deutschen Bahn",
+          en: "Logo of the Deutsche Bahn",
+        },
+      },
+      {
+        src: asset("/images/thesis-concept.png"),
+        alt: {
+          de: "Konzept des Jahresrückblicks: Events werden von Produktivsystem in einen Data Lake geschrieben. Von dort werden Buchungs-Events zu einem Jahresrückblick ausgewertet.",
+          en: "Concept for the yearly recap: events are written from the production system into a data lake, where booking events are analyzed for the recap.",
+        },
+      },
+      {
+        src: asset("/images/thesis-jr.png"),
+        alt: {
+          de: "Auszug aus dem Jahresrückblick. Beinhaltet Statistiken zur Anzahl der Reisen, zurückgelegter Strecke und Reisedauer.",
+          en: "Excerpt from the yearly recap with statistics about the number of trips, distance traveled, and travel duration.",
+        },
+      },
+    ],
+    tags: ["Data Lake", "VueJS", "Gamification"],
+  },
+  {
+    id: "praxisphasen",
+    kind: "project",
+    title: { de: "Praxiserfahrung im Dualen Studium", en: "Practical Training during my Dual Study Program" },
+    eyebrow: {
+      de: "DB Fernverkehr AG",
+      en: "DB Long-Distance AG",
+    },
+    description: {
+      de: "Die Praxisphasen meines Dualen Studiums bei der Deutschen Bahn habe ich in dem Projekt absolviert, das die digitalen Vertriebskanäle (z.B. Website, DB Navigator-App) entwickelt. Dabei durfte ich in jeder Praxisphase eine separate Abteilung kennenlernen.\n\n• Backend-Services mit Java Spring Boot: Ich habe im regulären Betrieb User Stories im Zusammenhang mit der Reiseauskunft bearbeitet.\n\n• Frontend-Entwicklung mit VueJS: Ich habe eine prototypische neue Komponente für die Verbindungsübersicht auf bahn.de entwickelt. Es ging um das schnelle Filtern von Verbindungen mithilfe einer Filtering Sidebar. Die Weiterentwicklung dieser Komponente ist inzwischen live gegangen.\n\n• Innovationsmanagement: Hier habe ich untersucht, inwiefern verschiedene Machine Learning-Modelle trainiert und eingesetzt werden können, um Storypoints von User Stories zu schätzen.",
+      en: "I completed the practical phases of my dual study program at Deutsche Bahn within the project responsible for developing its digital sales channels, such as the website and the DB Navigator app. During each practical phase, I had the opportunity to work with a different department.\n\n• Backend services with Java Spring Boot: As part of the regular development process, I worked on user stories related to journey planning.\n\n• Frontend development with Vue.js: I developed a prototype for a new component in the connection overview on bahn.de. The goal was to enable users to quickly filter connections using a filtering sidebar. A further developed version of this component has since gone live.\n\n• Innovation management: I investigated how different machine learning models could be trained and used to estimate story points for user stories.",
+    },
+    date: "2023",
+    dateEnd: "2025",
+    images: [
+      {
+        src: asset("/images/praxisphase.png"),
+        alt: {
+          de: "Logo der Deutschen Bahn",
+          en: "Logo of the Deutsche Bahn",
+        },
+      },
+    ],
+    tags: ["Spring Boot", "VueJS", "Machine Learning"],
+    link: "https://bahn.de",
   },
 ]
 

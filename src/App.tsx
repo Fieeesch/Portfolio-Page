@@ -22,7 +22,7 @@ import { cv, Language, PortfolioItem, profile, projects, publications, ui } from
 
 type Page = "home" | "projects" | "publications" | "about" | "detail";
 
-function formatPortfolioDate(
+function formatPortfolioDatePart(
   value: string,
   language: Language,
   monthStyle: "short" | "long" = "long",
@@ -48,6 +48,23 @@ function formatPortfolioDate(
     month: monthStyle,
     year: "numeric",
   }).format(date);
+}
+
+function formatPortfolioDate(
+  value: string,
+  language: Language,
+  monthStyle: "short" | "long" = "long",
+  endValue?: string,
+) {
+  const start = formatPortfolioDatePart(value, language, monthStyle);
+  if (!endValue) return start;
+
+  const end = formatPortfolioDatePart(endValue, language, monthStyle);
+  return `${start} – ${end}`;
+}
+
+function getPortfolioSortDate(item: PortfolioItem) {
+  return item.dateEnd ?? item.date;
 }
 
 function ButtonLink({
@@ -249,7 +266,7 @@ function Home({ language, navigate }: { language: Language; navigate: (page: Pag
   const t = ui[language];
   const featuredItems = [...projects, ...publications]
     .filter((item) => item.featured)
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .sort((a, b) => getPortfolioSortDate(b).localeCompare(getPortfolioSortDate(a)));
 
   return (
     <>
@@ -369,7 +386,7 @@ function ItemCard({
   showKind?: boolean;
 }) {
   const t = ui[language];
-  const date = formatPortfolioDate(item.date, language, "short");
+  const date = formatPortfolioDate(item.date, language, "short", item.dateEnd);
   return (
     <article
       className={`item-card ${featured ? "card-featured" : ""}`}
@@ -423,7 +440,8 @@ function Detail({
   const [imageIndex, setImageIndex] = useState(0);
   const t = ui[language];
   const returnPage = item.kind === "project" ? "projects" : "publications";
-  const date = formatPortfolioDate(item.date, language);
+  const date = formatPortfolioDate(item.date, language, "long", item.dateEnd);
+  const hasProjectAndDemoLinks = Boolean(item.link && item.demoLink);
 
   return (
     <article className="section detail-page">
@@ -482,15 +500,15 @@ function Detail({
               <p>{item.notes[language]}</p>
             </div>
           )}
-          {item.link && (
-            <ButtonLink href={item.link}>
-              {item.kind === "project" ? t.visit : t.publication}
+          {item.demoLink && (
+            <ButtonLink secondary={!hasProjectAndDemoLinks} href={item.demoLink}>
+              {t.demo}
               <ExternalLink size={17} />
             </ButtonLink>
           )}
-          {item.demoLink && (
-            <ButtonLink secondary href={item.demoLink}>
-              {t.demo}
+          {item.link && (
+            <ButtonLink secondary={hasProjectAndDemoLinks} href={item.link}>
+              {item.kind === "project" ? t.visit : t.publication}
               <ExternalLink size={17} />
             </ButtonLink>
           )}
