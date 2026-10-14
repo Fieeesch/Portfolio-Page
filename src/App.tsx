@@ -299,7 +299,7 @@ function Home({ language, navigate }: { language: Language; navigate: (page: Pag
         </div>
         <div className="hero-image-wrap">
           <img src={profile.heroImage} alt={profile.heroAlt[language]} />
-          <span className="hero-credit">@Simon Engelhardt</span>
+          <span className="hero-credit">Bild @Simon Engelhardt</span>
         </div>
       </section>
 

@@ -44,7 +44,8 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build -- --base "${{ steps.pages.outputs.base_path }}/"
+        # The custom domain serves the site at /; use the base from vite.config.ts.
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
