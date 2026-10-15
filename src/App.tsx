@@ -208,57 +208,63 @@ function Header({
   ];
 
   useEffect(() => {
-    const updateHeader = () => setIsScrolled(window.scrollY > 16);
+    const updateHeader = () => {
+      // Separate thresholds keep small scroll movements from toggling the header.
+      const scrollY = Math.max(0, window.scrollY);
+      setIsScrolled((compact) => (compact ? scrollY > 8 : scrollY > 32));
+    };
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
     return () => window.removeEventListener("scroll", updateHeader);
   }, []);
 
   return (
-    <header className={`site-header ${isScrolled ? "header-compact" : ""}`}>
-      <div className="header-inner">
-        <button className="wordmark" onClick={() => navigate("home")} aria-label={t.nav.home}>
-          CH<span>.</span>
-        </button>
-        <nav className={menuOpen ? "nav-open" : ""} aria-label="Main navigation">
-          {navItems.map((item) => (
+    <div className="header-slot">
+      <header className={`site-header ${isScrolled ? "header-compact" : ""}`}>
+        <div className="header-inner">
+          <button className="wordmark" onClick={() => navigate("home")} aria-label={t.nav.home}>
+            CH<span>.</span>
+          </button>
+          <nav className={menuOpen ? "nav-open" : ""} aria-label="Main navigation">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                className={page === item.id ? "nav-active" : ""}
+                onClick={() => navigate(item.id)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+          <div className="preferences">
             <button
-              key={item.id}
-              className={page === item.id ? "nav-active" : ""}
-              onClick={() => navigate(item.id)}
+              className="icon-button language-button"
+              onClick={() => setLanguage(language === "de" ? "en" : "de")}
+              aria-label={t.language}
+              title={t.language}
             >
-              {item.label}
+              <Languages size={17} />
+              <span>{language === "de" ? "DE" : "EN"}</span>
             </button>
-          ))}
-        </nav>
-        <div className="preferences">
-          <button
-            className="icon-button language-button"
-            onClick={() => setLanguage(language === "de" ? "en" : "de")}
-            aria-label={t.language}
-            title={t.language}
-          >
-            <Languages size={17} />
-            <span>{language === "de" ? "DE" : "EN"}</span>
-          </button>
-          <button
-            className="icon-button"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label={t.theme}
-            title={t.theme}
-          >
-            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-          <button
-            className="icon-button menu-button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={t.menu}
-          >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+            <button
+              className="icon-button"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              aria-label={t.theme}
+              title={t.theme}
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <button
+              className="icon-button menu-button"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={t.menu}
+            >
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
 

@@ -82,10 +82,18 @@ img {
   overflow-x: clip;
 }
 
-.site-header {
+.header-slot {
+  /* Reserve the expanded height so resizing cannot change the scroll position. */
   position: sticky;
   z-index: 30;
   top: 0;
+  height: calc(76px + env(safe-area-inset-top));
+}
+
+.site-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
   height: calc(76px + env(safe-area-inset-top));
   padding-top: env(safe-area-inset-top);
   border-bottom: 1px solid var(--line);
@@ -993,6 +1001,7 @@ nav .nav-active::after {
 }
 
 @media (max-width: 560px) {
+  .header-slot,
   .site-header {
     height: calc(66px + env(safe-area-inset-top));
   }
