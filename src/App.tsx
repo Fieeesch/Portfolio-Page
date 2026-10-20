@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import { Navigate, Route, Routes, useLocation, useNavigate, useParams } from "react-router";
 import {
   ArrowLeft,
   ArrowRight,
@@ -116,8 +117,12 @@ function App() {
   const [theme, setTheme] = useState<"light" | "dark">(() =>
     window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light",
   );
-  const [page, setPage] = useState<Page>("home");
-  const [selectedId, setSelectedId] = useState<string>();
+  const location = useLocation();
+  const routerNavigate = useNavigate();
+  const section = location.pathname.split("/")[1];
+  const page: Page = section === "projects" || section === "publications" || section === "about"
+    ? section
+    : "home";
   const [menuOpen, setMenuOpen] = useState(false);
   const t = ui[language];
 
@@ -126,16 +131,25 @@ function App() {
     document.documentElement.lang = language;
   }, [theme, language]);
 
-  const selectedItem = useMemo(
-    () => [...projects, ...publications].find((item) => item.id === selectedId),
-    [selectedId],
-  );
+  useEffect(() => {
+    setMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: "instant" });
+    // Keep the home URL free of a hash, including when returning via history.
+    if (location.pathname === "/" && window.location.hash === "#/") {
+      window.history.replaceState(window.history.state, "", window.location.pathname + window.location.search);
+    }
+  }, [location.pathname]);
 
   const navigate = (nextPage: Page, id?: string) => {
-    setPage(nextPage);
-    setSelectedId(id);
+    let path = nextPage === "home" ? "/" : `/${nextPage}`;
+    if (nextPage === "detail") {
+      const item = [...projects, ...publications].find((entry) => entry.id === id);
+      if (!item) return;
+      path = `/${item.kind === "project" ? "projects" : "publications"}/${encodeURIComponent(item.id)}`;
+    }
     setMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (path !== location.pathname) routerNavigate(path);
+    else window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -151,32 +165,52 @@ function App() {
         navigate={navigate}
       />
       <main>
-        {page === "home" && <Home language={language} navigate={navigate} />}
-        {page === "projects" && (
-          <Listing
-            title={t.allProjects}
-            intro={t.projectIntro}
-            items={projects}
-            language={language}
-            navigate={navigate}
+        <Routes>
+          <Route path="/" element={<Home language={language} navigate={navigate} />} />
+          <Route
+            path="/projects"
+            element={
+              <Listing
+                title={t.allProjects}
+                intro={t.projectIntro}
+                items={projects}
+                language={language}
+                navigate={navigate}
+              />
+            }
           />
-        )}
-        {page === "publications" && (
-          <Listing
-            title={t.allPublications}
-            intro={t.publicationIntro}
-            items={publications}
-            language={language}
-            navigate={navigate}
+          <Route
+            path="/publications"
+            element={
+              <Listing
+                title={t.allPublications}
+                intro={t.publicationIntro}
+                items={publications}
+                language={language}
+                navigate={navigate}
+              />
+            }
           />
-        )}
-        {page === "about" && <About language={language} />}
-        {page === "detail" && selectedItem && (
-          <Detail item={selectedItem} language={language} navigate={navigate} />
-        )}
+          <Route path="/projects/:id" element={<DetailRoute kind="project" language={language} navigate={navigate} />} />
+          <Route path="/publications/:id" element={<DetailRoute kind="publication" language={language} navigate={navigate} />} />
+          <Route path="/about" element={<About language={language} />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
     </div>
   );
+}
+
+function DetailRoute({ kind, language, navigate }: {
+  kind: PortfolioItem["kind"];
+  language: Language;
+  navigate: (page: Page) => void;
+}) {
+  const { id } = useParams();
+  const items = kind === "project" ? projects : publications;
+  const item = items.find((entry) => entry.id === id);
+  if (!item) return <Navigate to={kind === "project" ? "/projects" : "/publications"} replace />;
+  return <Detail key={item.id} item={item} language={language} navigate={navigate} />;
 }
 
 function Header({
