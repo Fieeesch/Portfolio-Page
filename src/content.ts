@@ -272,10 +272,11 @@ export const projects: PortfolioItem[] = [
       },
     ],
     tags: ["Couch Coop Multiplayer", "Unity", "C#"],
-    link: "https://cilhlb.itch.io/wolkenmeer",
+    link: "https://github.com/Fieeesch/Wolkenmeer",
+    demoLink: "https://cilhlb.itch.io/wolkenmeer",
     notes: {
-      de: "Das fertige Spiel haben wir als kostenlos herunterladbare .exe auf itch.io veröffentlicht:",
-      en: "We published the final game as a free-to-download executable on itch.io:",
+      de: "Das fertige Spiel haben wir als kostenlos herunterladbare .exe auf itch.io veröffentlicht. Der Quellcode wurde auf GitHub hochgeladen.",
+      en: "We published the final game as a free-to-download executable on itch.io. The source code can be found on GitHub.",
     },
   },
   {
